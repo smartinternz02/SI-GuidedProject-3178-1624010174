@@ -1,0 +1,958 @@
+{
+  "intents": [
+    {
+      "intent": "greetings",
+      "examples": [
+        {
+          "text": "Hello"
+        },
+        {
+          "text": "hi"
+        },
+        {
+          "text": "Ok"
+        },
+        {
+          "text": "Okay"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "OTP",
+      "examples": [
+        {
+          "text": "11AB"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "seats",
+      "examples": [
+        {
+          "text": "1"
+        },
+        {
+          "text": "2"
+        },
+        {
+          "text": "3"
+        },
+        {
+          "text": "4"
+        },
+        {
+          "text": "5"
+        },
+        {
+          "text": "6"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "thankyou",
+      "examples": [
+        {
+          "text": "Thanks"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "time",
+      "examples": [
+        {
+          "text": "11:30AM"
+        },
+        {
+          "text": "3PM"
+        },
+        {
+          "text": "9PM"
+        }
+      ],
+      "description": ""
+    }
+  ],
+  "entities": [
+    {
+      "entity": "movie",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "376 D-HINDI",
+          "synonyms": [
+            "Ginny Weds Sunny-HINDI"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "Black Widow-ENGLISH",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Ginny Weds Sunny-HINDI",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Ila Naa Jathaga-TELUGU",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Kaaliyan-MALAYALAM",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Namaste India-KANNADA",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Sampati-BENGALI",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Soorarai Pottru-TAMIL",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "The Big Bull-HINDI",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "The Lie-ENGLISH",
+          "synonyms": []
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "region",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "Bangalore",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Hyderabad",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Mumbai",
+          "synonyms": []
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "sys-date",
+      "values": [],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "sys-number",
+      "values": [],
+      "fuzzy_match": true
+    }
+  ],
+  "metadata": {
+    "api_version": {
+      "major_version": "v2",
+      "minor_version": "2018-11-08"
+    }
+  },
+  "dialog_nodes": [
+    {
+      "type": "standard",
+      "title": "Anything else",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "I didn't understand. You can try rephrasing."
+              },
+              {
+                "text": "Can you reword your statement? I'm not understanding."
+              },
+              {
+                "text": "I didn't get your meaning."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "anything_else",
+      "dialog_node": "Anything else",
+      "previous_sibling": "node_3_1626438134585",
+      "disambiguation_opt_out": true
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "source": "https://th.bing.com/th/id/OIP.x6kvpThZ8FpOQWzkINiQvwHaNK?w=187&h=333&c=7&o=5&dpr=1.56&pid=1.7",
+            "response_type": "image"
+          },
+          {
+            "title": "Select Region:",
+            "options": [
+              {
+                "label": "Hyderabad",
+                "value": {
+                  "input": {
+                    "text": "Hyderabad"
+                  }
+                }
+              },
+              {
+                "label": "Bangalore",
+                "value": {
+                  "input": {
+                    "text": "Bangalore"
+                  }
+                }
+              },
+              {
+                "label": "Mumbai",
+                "value": {
+                  "input": {
+                    "text": "Mumbai"
+                  }
+                }
+              }
+            ],
+            "response_type": "option"
+          }
+        ]
+      },
+      "conditions": "@movie:(Black Widow-ENGLISH)",
+      "dialog_node": "node_10_1626432128806",
+      "previous_sibling": "node_3_1626428494221"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "source": "https://in.bmscdn.com/iedb/movies/images/mobile/thumbnail/large/376-d-et00145101-01-10-2020-11-30-22.jpg",
+            "response_type": "image"
+          },
+          {
+            "title": "Select Region:",
+            "options": [
+              {
+                "label": "Hyderabad",
+                "value": {
+                  "input": {
+                    "text": "Hyderabad"
+                  }
+                }
+              },
+              {
+                "label": "Bangalore",
+                "value": {
+                  "input": {
+                    "text": "Bangalore"
+                  }
+                }
+              },
+              {
+                "label": "Mumbai",
+                "value": {
+                  "input": {
+                    "text": "Mumbai"
+                  }
+                }
+              }
+            ],
+            "response_type": "option"
+          }
+        ]
+      },
+      "conditions": "@movie:(376 D-HINDI)",
+      "dialog_node": "node_2_1626433478233",
+      "previous_sibling": "node_9_1626433263159"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "source": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7LPzI0n5n0pdyuQFF_4_cYYCM27q5QXePGA&usqp=CAU",
+            "response_type": "image"
+          },
+          {
+            "title": "Select Region:",
+            "options": [
+              {
+                "label": "Hyderabad",
+                "value": {
+                  "input": {
+                    "text": " Hyderabad"
+                  }
+                }
+              },
+              {
+                "label": "Bangalore",
+                "value": {
+                  "input": {
+                    "text": "Bangalore"
+                  }
+                }
+              },
+              {
+                "label": "Mumbai",
+                "value": {
+                  "input": {
+                    "text": "Mumbai"
+                  }
+                }
+              }
+            ],
+            "response_type": "option"
+          }
+        ]
+      },
+      "conditions": "@movie:(Ginny Weds Sunny-HINDI)",
+      "dialog_node": "node_2_1626433966214",
+      "previous_sibling": "node_4_1626433818014"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "title": "choose any movie from the list:",
+            "options": [
+              {
+                "label": "Black Widow-ENGLISH",
+                "value": {
+                  "input": {
+                    "text": "Black Widow-ENGLISH"
+                  }
+                }
+              },
+              {
+                "label": "376 D-HINDI",
+                "value": {
+                  "input": {
+                    "text": "376 D-HINDI"
+                  }
+                }
+              },
+              {
+                "label": "Ginny Weds Sunny -HINDI",
+                "value": {
+                  "input": {
+                    "text": "Ginny Weds Sunny -HINDI)"
+                  }
+                }
+              },
+              {
+                "label": "The Lie-ENGLISH",
+                "value": {
+                  "input": {
+                    "text": "The Lie-ENGLISH"
+                  }
+                }
+              },
+              {
+                "label": "The Big Bull-HINDI",
+                "value": {
+                  "input": {
+                    "text": "The Big Bull-HINDI"
+                  }
+                }
+              },
+              {
+                "label": "Soorarai Pottru-TAMIL",
+                "value": {
+                  "input": {
+                    "text": "Soorarai Pottru-TAMIL"
+                  }
+                }
+              },
+              {
+                "label": "Namaste India-KANNADA",
+                "value": {
+                  "input": {
+                    "text": "Namaste India-KANNADA"
+                  }
+                }
+              },
+              {
+                "label": "Kaaliyan-MALAYALAM",
+                "value": {
+                  "input": {
+                    "text": "Kaaliyan-MALAYALAM"
+                  }
+                }
+              },
+              {
+                "label": "Ila Naa Jathaga-TELUGU",
+                "value": {
+                  "input": {
+                    "text": "Ila Naa Jathaga-TELUGU"
+                  }
+                }
+              },
+              {
+                "label": "Sampati-BENGALI",
+                "value": {
+                  "input": {
+                    "text": "Sampati-BENGALI"
+                  }
+                }
+              }
+            ],
+            "response_type": "option"
+          }
+        ]
+      },
+      "conditions": "#greetings",
+      "dialog_node": "node_3_1626428494221",
+      "previous_sibling": "Welcome"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "source": "https://in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/kaaliyan-et00071631-27-02-2018-11-47-06.jpg",
+            "response_type": "image"
+          },
+          {
+            "title": "Select Region:",
+            "options": [
+              {
+                "label": "Hyderabad",
+                "value": {
+                  "input": {
+                    "text": "Hyderabad"
+                  }
+                }
+              },
+              {
+                "label": "Bangalore",
+                "value": {
+                  "input": {
+                    "text": "Bangalore"
+                  }
+                }
+              },
+              {
+                "label": "Mumbai",
+                "value": {
+                  "input": {
+                    "text": "Mumbai"
+                  }
+                }
+              }
+            ],
+            "response_type": "option"
+          }
+        ]
+      },
+      "conditions": "@movie:Kaaliyan-MALAYALAM",
+      "dialog_node": "node_3_1626433638109",
+      "previous_sibling": "node_2_1626433478233"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "source": "https://in.bmscdn.com/iedb/movies/images/mobile/thumbnail/large/samapti-et00132565-07-06-2020-10-51-08.jpg",
+            "response_type": "image"
+          },
+          {
+            "title": "Select Region:",
+            "options": [
+              {
+                "label": "Hyderabad",
+                "value": {
+                  "input": {
+                    "text": "Hyderabad"
+                  }
+                }
+              },
+              {
+                "label": "Bangalore",
+                "value": {
+                  "input": {
+                    "text": "Bangalore"
+                  }
+                }
+              },
+              {
+                "label": "Mumbai",
+                "value": {
+                  "input": {
+                    "text": "Mumbai"
+                  }
+                }
+              }
+            ],
+            "response_type": "option"
+          }
+        ]
+      },
+      "conditions": "@movie:Sampati-BENGALI",
+      "dialog_node": "node_3_1626434145573",
+      "previous_sibling": "node_2_1626433966214"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "source": "https://www.letsott.com/assets/uploads/posts/the-lie-amazon-prime-video-min.jpg",
+            "response_type": "image"
+          },
+          {
+            "title": "Select Region:",
+            "options": [
+              {
+                "label": "Hyderabad",
+                "value": {
+                  "input": {
+                    "text": "Hyderabad"
+                  }
+                }
+              },
+              {
+                "label": "Bangalore",
+                "value": {
+                  "input": {
+                    "text": "Bangalore"
+                  }
+                }
+              },
+              {
+                "label": "Mumbai",
+                "value": {
+                  "input": {
+                    "text": "Mumbai"
+                  }
+                }
+              }
+            ],
+            "response_type": "option"
+          }
+        ]
+      },
+      "conditions": "@movie:(The Lie-ENGLISH)",
+      "dialog_node": "node_3_1626434295321",
+      "previous_sibling": "node_3_1626434145573"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "title": "Select the number of seats:",
+            "options": [
+              {
+                "label": "1",
+                "value": {
+                  "input": {
+                    "text": "1"
+                  }
+                }
+              },
+              {
+                "label": "2",
+                "value": {
+                  "input": {
+                    "text": "2"
+                  }
+                }
+              },
+              {
+                "label": "3",
+                "value": {
+                  "input": {
+                    "text": "3"
+                  }
+                }
+              },
+              {
+                "label": "4",
+                "value": {
+                  "input": {
+                    "text": "4"
+                  }
+                }
+              },
+              {
+                "label": "5",
+                "value": {
+                  "input": {
+                    "text": "5"
+                  }
+                }
+              },
+              {
+                "label": "6",
+                "value": {
+                  "input": {
+                    "text": "6"
+                  }
+                }
+              }
+            ],
+            "response_type": "option"
+          }
+        ]
+      },
+      "conditions": "@region",
+      "dialog_node": "node_3_1626436832245",
+      "previous_sibling": "node_6_1626435635292"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Ticket details are sent to your mobile number. Complete payment and book the slot. Thank you for using our service."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#OTP",
+      "dialog_node": "node_3_1626437886511",
+      "previous_sibling": "node_5_1626437743449"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "source": "https://th.bing.com/th/id/OIP.R9A50ulvvtyhd2IykwAlDQHaD8?w=309&h=180&c=7&o=5&dpr=1.56&pid=1.7 ",
+            "response_type": "image"
+          }
+        ]
+      },
+      "conditions": "#thankyou",
+      "dialog_node": "node_3_1626438134585",
+      "previous_sibling": "node_3_1626437886511"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "source": "https://in.bmscdn.com/iedb/movies/images/mobile/thumbnail/large/ila-naa-jathaga-et00131904-30-05-2020-02-28-29.jpg",
+            "response_type": "image"
+          },
+          {
+            "title": "Select Region:",
+            "options": [
+              {
+                "label": "Hyderabad",
+                "value": {
+                  "input": {
+                    "text": "Hyderabad"
+                  }
+                }
+              },
+              {
+                "label": "Bangalore",
+                "value": {
+                  "input": {
+                    "text": "Bangalore"
+                  }
+                }
+              },
+              {
+                "label": "Mumbai",
+                "value": {
+                  "input": {
+                    "text": "Mumbai"
+                  }
+                }
+              }
+            ],
+            "response_type": "option"
+          }
+        ]
+      },
+      "conditions": "@movie:(Ila Naa Jathaga-TELUGU)",
+      "dialog_node": "node_4_1626433818014",
+      "previous_sibling": "node_3_1626433638109"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "OTP is sent to the number.Enter OTP:"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "@sys-number",
+      "dialog_node": "node_5_1626437743449",
+      "previous_sibling": "node_6_1626437615373"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "source": "https://th.bing.com/th/id/OIP.IeuGhn89YklvVe2_8zWEmgHaLQ?w=115&h=180&c=7&o=5&dpr=1.56&pid=1.7",
+            "response_type": "image"
+          },
+          {
+            "title": "Select Region:",
+            "options": [
+              {
+                "label": "Hyderabad",
+                "value": {
+                  "input": {
+                    "text": "Hyderabad"
+                  }
+                }
+              },
+              {
+                "label": "Bangalore",
+                "value": {
+                  "input": {
+                    "text": "Bangalore"
+                  }
+                }
+              },
+              {
+                "label": "Mumbai",
+                "value": {
+                  "input": {
+                    "text": "Mumbai"
+                  }
+                }
+              }
+            ],
+            "response_type": "option"
+          }
+        ]
+      },
+      "conditions": "@movie:(Soorarai Pottru-TAMIL)",
+      "dialog_node": "node_6_1626435635292",
+      "previous_sibling": "node_8_1626434449795"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Enter the date you want to watch"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#seats",
+      "dialog_node": "node_6_1626437200477",
+      "previous_sibling": "node_3_1626436832245"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Ticket(s) available at PVP cinemas at 11:30AM,3PM and 9PM,Enter time:"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "@sys-date",
+      "dialog_node": "node_6_1626437270495",
+      "previous_sibling": "node_6_1626437200477"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Okay, Enter mobile number:"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#time",
+      "dialog_node": "node_6_1626437615373",
+      "previous_sibling": "node_6_1626437270495"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "source": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzUlbodCsvfdaX3Yeq6HffABHsM1bOUrRsPg&usqp=CAU",
+            "response_type": "image"
+          },
+          {
+            "title": "Select Region:",
+            "options": [
+              {
+                "label": "Hyderabad",
+                "value": {
+                  "input": {
+                    "text": "Hyderabad"
+                  }
+                }
+              },
+              {
+                "label": "Bangalore",
+                "value": {
+                  "input": {
+                    "text": "Bangalore"
+                  }
+                }
+              },
+              {
+                "label": "Mumbai",
+                "value": {
+                  "input": {
+                    "text": "Mumbai"
+                  }
+                }
+              }
+            ],
+            "response_type": "option"
+          }
+        ]
+      },
+      "conditions": "@movie:(The Big Bull-HINDI)",
+      "dialog_node": "node_8_1626434449795",
+      "previous_sibling": "node_3_1626434295321"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "source": "https://in.bmscdn.com/iedb/movies/images/mobile/thumbnail/large/namasthe-india-et00132308-29-07-2020-07-13-29.jpg",
+            "response_type": "image"
+          },
+          {
+            "title": "Select Region:",
+            "options": [
+              {
+                "label": "Hyderabad",
+                "value": {
+                  "input": {
+                    "text": "Hyderabad"
+                  }
+                }
+              },
+              {
+                "label": "Bangalore",
+                "value": {
+                  "input": {
+                    "text": "Bangalore"
+                  }
+                }
+              },
+              {
+                "label": "Mumbai",
+                "value": {
+                  "input": {
+                    "text": "Mumbai"
+                  }
+                }
+              }
+            ],
+            "response_type": "option"
+          }
+        ]
+      },
+      "conditions": "@movie:(Namaste India-KANNADA)",
+      "dialog_node": "node_9_1626433263159",
+      "previous_sibling": "node_10_1626432128806"
+    },
+    {
+      "type": "standard",
+      "title": "Welcome",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Hello. Iam here to help you to book movie tickets."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "welcome",
+      "dialog_node": "Welcome"
+    }
+  ],
+  "counterexamples": [],
+  "system_settings": {
+    "off_topic": {
+      "enabled": true
+    },
+    "disambiguation": {
+      "prompt": "Did you mean:",
+      "enabled": true,
+      "randomize": true,
+      "max_suggestions": 5,
+      "suggestion_text_policy": "title",
+      "none_of_the_above_prompt": "None of the above"
+    },
+    "human_agent_assist": {
+      "prompt": "Did you mean:"
+    },
+    "intent_classification": {
+      "training_backend_version": "v2"
+    },
+    "spelling_auto_correct": true
+  },
+  "learning_opt_out": false,
+  "name": "MTB",
+  "language": "en",
+  "description": ""
+}
